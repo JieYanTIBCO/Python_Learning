@@ -13,3 +13,7 @@ print(nums)
 nums = [5, 7, 9, 1, 3]
 print(heapq.nlargest(3, nums))  # 输出: [9, 7]
 print(heapq.nsmallest(2, nums))  # 输出: [1, 3]
+
+
+string1="1234567890"
+print(string1[:7])
