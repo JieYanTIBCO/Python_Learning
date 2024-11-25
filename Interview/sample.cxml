@@ -1,0 +1,29 @@
+<cXML payloadID="123456" timestamp="2023-01-01T12:00:00">
+    <Header>
+        <From>
+            <Credential domain="DUNS">
+                <Identity>123456789</Identity>
+            </Credential>
+        </From>
+        <To>
+            <Credential domain="DUNS">
+                <Identity>987654321</Identity>
+            </Credential>
+        </To>
+        <Sender>
+            <Credential domain="DUNS">
+                <Identity>567890123</Identity>
+            </Credential>
+            <UserAgent>ExampleAgent</UserAgent>
+        </Sender>
+    </Header>
+    <Request>
+        <OrderRequest>
+            <OrderRequestHeader orderID="A12345" orderDate="2023-01-01">
+                <Total>
+                    <Money currency="USD">100.00</Money>
+                </Total>
+            </OrderRequestHeader>
+        </OrderRequest>
+    </Request>
+</cXML>
