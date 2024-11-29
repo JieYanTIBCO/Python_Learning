@@ -1,0 +1,6 @@
+2024-11-24 21:45:00.012 - CRITICAL - [Thread-3] - System reboot initiated.
+2024-11-24 21:45:00.123 - INFO - [Thread-3] - User login successful.
+2024-11-24 21:45:00.234 - DEBUG - [Thread-1] - Cache miss for key: user123
+2024-11-24 21:45:00.456 - WARNING - [Thread-5] - Memory usage exceeds threshold.
+2024-11-24 21:45:00.789 - ERROR - [Thread-2] - Request timed out.
+2024-11-24 21:46:00.012 - CRITICAL - [Thread-3] - System reboot initiated.
