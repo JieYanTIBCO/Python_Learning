@@ -1,0 +1,11 @@
+2024-12-05 20:30:38,330 - ERROR - Error fetching primary keys: no such table: customer
+2024-12-05 20:33:54,589 - ERROR - Error fetching primary keys: no such table: customer
+2024-12-05 20:37:32,529 - ERROR - Error fetching primary keys: no such table: customer
+2024-12-05 20:39:30,114 - ERROR - Error fetching primary keys: no such table: customer
+2024-12-05 20:41:51,007 - ERROR - Error fetching primary keys: no such table: customer
+2024-12-05 20:51:21,481 - INFO - []
+2024-12-05 20:51:31,198 - INFO - []
+2024-12-05 20:52:10,241 - INFO - []
+2024-12-05 20:52:30,500 - INFO - []
+2024-12-05 20:56:49,252 - INFO - []
+2024-12-05 20:57:45,097 - INFO - []
