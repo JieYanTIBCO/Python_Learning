@@ -9,3 +9,16 @@
 2024-12-05 20:52:30,500 - INFO - []
 2024-12-05 20:56:49,252 - INFO - []
 2024-12-05 20:57:45,097 - INFO - []
+2024-12-06 22:01:45,703 - INFO - [MainThread] - Logging has been successfully configured.
+2024-12-06 22:01:45,704 - INFO - [MainThread] - This is an info message.
+2024-12-06 22:01:45,704 - WARNING - [MainThread] - This is a warning message.
+2024-12-06 22:01:45,704 - ERROR - [MainThread] - This is an error message.
+2024-12-06 22:02:09,834 - INFO - [MainThread] - Logging has been successfully configured.
+2024-12-06 22:02:09,834 - INFO - [MainThread] - This is an info message.
+2024-12-06 22:02:09,834 - WARNING - [MainThread] - This is a warning message.
+2024-12-06 22:02:09,834 - ERROR - [MainThread] - This is an error message.
+2024-12-06 22:02:29,134 - INFO - [MainThread] - Logging has been successfully configured.
+2024-12-06 22:02:29,138 - INFO - [MainThread] - This is an info message.
+2024-12-06 22:02:29,138 - DEBUG - [MainThread] - This is an debug message.
+2024-12-06 22:02:29,138 - WARNING - [MainThread] - This is a warning message.
+2024-12-06 22:02:29,138 - ERROR - [MainThread] - This is an error message.
