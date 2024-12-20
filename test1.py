@@ -1,4 +1,6 @@
-import sys
-import duckdb
-print(f"Python Executable: {sys.executable}")
-print(f"DuckDB Version: {duckdb.__version__}")
+
+try:
+    n = 100/0
+
+except Exception as e:
+    print(f"{e}")
