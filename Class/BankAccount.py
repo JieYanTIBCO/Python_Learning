@@ -2,7 +2,7 @@ import setup_logging as sl
 import logging
 import datetime
 
-sl.setup_logging(log_level=logging.DEBUG)
+sl.setup_logging()
 
 
 class BankAccount:
@@ -14,7 +14,7 @@ class BankAccount:
         self.balance = balance
         self.transaction_history = []
         self.logger = logging.getLogger(self.__class__.__name__)
-        self.logger.info(f"Bank account created for {self.account_holder}")
+        self.logger.debug(f"Bank account created for {self.account_holder}")
 
     # deposit function
     def deposit(self, amount):
@@ -42,7 +42,7 @@ class BankAccount:
         self.logger.info(self.balance)
 
     def print_transaction_history(self):
-        self.logger.info(self.transaction_history)
+        self.logger.info("\n".join(self.transaction_history))
 
 
 logger = logging.getLogger(__name__)
