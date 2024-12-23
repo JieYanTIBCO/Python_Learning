@@ -1,0 +1,10 @@
+2024-12-05 21:24:31,434 - DEBUG - This is a DEBUG message for detailed diagnostic information.
+2024-12-05 21:24:31,434 - INFO - This is an INFO message for general information.
+2024-12-05 21:24:31,434 - WARNING - This is a WARNING message for potential issues.
+2024-12-05 21:24:31,434 - ERROR - This is an ERROR message for serious issues.
+2024-12-05 21:24:31,434 - CRITICAL - This is a CRITICAL message for severe errors.
+2024-12-05 21:30:24,465 - DEBUG - This is a DEBUG message for detailed diagnostic information.
+2024-12-05 21:30:24,465 - INFO - This is an INFO message for general information.
+2024-12-05 21:30:24,465 - WARNING - This is a WARNING message for potential issues.
+2024-12-05 21:30:24,466 - ERROR - This is an ERROR message for serious issues.
+2024-12-05 21:30:24,466 - CRITICAL - This is a CRITICAL message for severe errors.

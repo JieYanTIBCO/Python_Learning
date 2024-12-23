@@ -2,6 +2,9 @@
 	"folders": [
 		{
 			"path": "."
+		},
+		{
+			"path": "../Database_Match_Migration"
 		}
 	],
 	"settings": {}
