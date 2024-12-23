@@ -1,11 +1,18 @@
-import sys
+import cudf
+import numpy as np
 
+# Generate a large dataset
+n_rows = 10_000_000  # 10 million rows
+data = {
+    'category': np.random.choice(['A', 'B', 'C', 'D'], size=n_rows),
+    'value': np.random.rand(n_rows)
+}
 
-dict_size = sys.getsizeof(dict())
-set_size = sys.getsizeof(set())
+# Create a cuDF DataFrame
+gdf = cudf.DataFrame(data)
 
-print(f"Dictionary empty ({{}}) size: {dict_size} bytes")
-print(f"Set empty({{}}) size: {set_size} bytes")
+# Perform a grouped aggregation
+result = gdf.groupby('category').agg({'value': ['mean', 'sum', 'count']})
 
-lst1=list(range(1,1000))
-print(','.join(map(str, lst1)))
+# Display the result
+print(result)

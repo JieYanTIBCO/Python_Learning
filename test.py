@@ -28,3 +28,22 @@ def test_exception(n):
 
 # Test the function
 test_exception(1)
+
+
+
+with CTE as(
+select num_users, 
+row_number() over(order by num_users)
+from search_frequency
+)
+
+select 
+case 
+when (select max(row_number) from CTE)%2=1 then (select num_users from CTE where row_number=(select max(row_number +1)/2 from CTE))
+else (SELECT round(avg(num_users),2)
+from CTE
+WHERE row_number IN (
+    (SELECT MAX(row_number) / 2 FROM CTE),
+    (SELECT MAX(row_number) / 2 + 1 FROM CTE)))
+AS median
+from CTE
