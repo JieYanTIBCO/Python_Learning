@@ -1,7 +1,5 @@
-import setup_logging as sl
-import logging
+from setup_logging import get_logger
 
-sl.setup_logging()
-logger = logging.getLogger(__name__)
+logger = get_logger(log_file="anothername.log")
 
-logger.info("test")
+logger.debug("tesst debug")
