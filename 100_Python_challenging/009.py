@@ -3,13 +3,13 @@
 # Suppose the following input is supplied to the program: Hello world Practice makes perfect
 # Then, the output should be: HELLO WORLD PRACTICE MAKES PERFECT
 
-# lines = []
-# while True:
-#     s = input()
-#     if s:
-#         lines.append(s.upper())
-#     else:
-#         break
+lines = []
+while True:
+    s = input()
+    if s:
+        lines.append(s.upper())
+    else:
+        break
 
 
-# print(' '.join(lines))
+print(' '.join(lines))
