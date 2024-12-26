@@ -1,10 +1,7 @@
-import datetime
-import pytz
+import setup_logging as sl
+import logging
 
-# Get the current datetime with timezone
-tz = pytz.timezone('America/Toronto')  # Replace with your desired timezone
-now_with_tz = datetime.datetime.now(tz)
+sl.setup_logging()
+logger = logging.getLogger(__name__)
 
-# Format the datetime with the custom format
-formatted = now_with_tz.strftime("%Y-%m-%d %H:%M:%S %Z")
-print(formatted)
+logger.info("test")

@@ -11,8 +11,6 @@ word_count["test111"]
 print(word_count)  # Output: {'apple': 2, 'banana': 1, 'orange': 1}
 
 
-from collections import defaultdict
-
 items = [
     ('apple', 'fruit'),
     ('carrot', 'vegetable'),
@@ -27,3 +25,9 @@ for item, category in items:
     category_dict[category].append(item)
 
 print(category_dict)
+print(category_dict.items())
+
+# test = category_dict.pop("vegetable")
+# print(category_dict)
+# print(type(test))
+# print(test)

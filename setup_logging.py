@@ -13,6 +13,7 @@ class TimezoneFormatter(logging.Formatter):
     def __init__(self, fmt=None, datefmt=None):
         super().__init__(fmt, datefmt)
         self.local_timezone = datetime.now().astimezone().tzinfo
+        print(f"self.local_timezone:{self.local_timezone}")
 
     def formatTime(self, record, datefmt=None):
         # Use record.created (UNIX timestamp) to create timezone-aware datetime
