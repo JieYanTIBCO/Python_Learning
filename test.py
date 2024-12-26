@@ -1,5 +1,10 @@
 from setup_logging import get_logger
 
-logger = get_logger(log_file="anothername.log")
+logger = get_logger()
+if __name__ == "__main__":
 
-logger.debug("tesst debug")
+
+
+    logger.debug("test debug")
+    logger.debug("test debug")
+    logger.debug("test debug")
