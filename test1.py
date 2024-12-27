@@ -1,6 +1,17 @@
 
-try:
-    n = 100/0
+from curses.ascii import isalpha, isdigit, ispunct, isspace
 
-except Exception as e:
-    print(f"{e}")
+
+str1 = r"% hello world! 123^&*()"
+
+for char in str1:
+    if isdigit(char):
+        print(f"digit:{char}")
+    elif isalpha(char):
+        print(f"alpha:{char}")
+    elif isspace(char):
+        print(f"space:{char}")
+    elif ispunct(char):
+        print(f"punct:{char}")
+    else:
+        pass
