@@ -39,9 +39,9 @@ def test_count_case():
 
 def test_invalid_input():
     with pytest.raises(TypeError):
-        count_case(None)
+        count_case(None) # type: ignore
     with pytest.raises(TypeError):
-        count_case(123)
+        count_case(123) # type: ignore
 
 
 def test_special_cases():
