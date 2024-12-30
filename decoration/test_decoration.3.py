@@ -28,5 +28,5 @@ if __name__ == "__main__":
     string_list = ["apple", "banana", "cherry"]
     data_dict = {"key1": "value1", "key2": "value2"}
 
-    result = process_data(number, string_list, data_dict)
+    result = process_data(number, string_list, data_dict) # type: ignore
     print(result)
