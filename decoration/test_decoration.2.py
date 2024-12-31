@@ -1,9 +1,22 @@
+from functools import wraps, lru_cache
 from decoration.log_decoration import log_decoration
 
 
-@log_decoration(max_retries=3)
-def add(a: int, b: int) -> int:
-    """Test function that adds two numbers."""
-    return a + b
+@lru_cache(maxsize=None)
+def fibonacci(n: int) -> int:
+    """Calculate the nth Fibonacci number."""
+    if n <= 0:
+        return 0
+    elif n == 1:
+        return 1
+    else:
+        return fibonacci(n - 1) + fibonacci(n - 2)
 
-add(1, 2)
+
+# First call
+print(fibonacci(5))
+print(fibonacci.cache_info())
+
+# Second call
+print(fibonacci(5))
+print(fibonacci.cache_info())
