@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Fancy Christmas Tree with CreateJS Fireworks</title>
+    <style>
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Dark Blue Gradient Background */
+        body {
+            background: linear-gradient(to bottom, #001542 0%, #002f6c 100%);
+            min-height: 100vh;
+            overflow: hidden;
+            font-family: sans-serif;
+            color: #fff;
+            position: relative;
+        }
+
+        /* Fireworks Canvas (behind everything) */
+        #canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 0;
+            /* behind scene */
+        }
+
+        /* Main container for tree, reindeer, snow (above fireworks) */
+        .scene {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            /* on top of canvas */
+        }
+
+        /* SNOWFLAKES */
+        @keyframes fall {
+            0% {
+                transform: translateY(-100px);
+            }
+
+            100% {
+                transform: translateY(120vh);
+            }
+        }
+
+        .snowflake {
+            position: absolute;
+            top: -10px;
+            border-radius: 50%;
+            background: #fff;
+            opacity: 0.8;
+            animation: fall linear infinite;
+        }
+
+        /* Tree container */
+        .tree-wrapper {
+            position: absolute;
+            bottom: 5%;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* Star at top */
+        .tree-star {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background: gold;
+            clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+            top: -50px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: twinkle 2s infinite alternate;
+        }
+
+        @keyframes twinkle {
+            0% {
+                opacity: 0.6;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        /* Tree (stacked triangles) */
+        .tree {
+            position: relative;
+            /* Ornaments/trunk use absolute positioning inside */
+            width: 0;
+            height: 0;
+            border-left: 100px solid transparent;
+            border-right: 100px solid transparent;
+            border-bottom: 150px solid #0a4;
+            /* top layer */
+        }
+
+        .tree::before {
+            content: "";
+            position: absolute;
+            bottom: 100%;
+            left: -80px;
+            border-left: 80px solid transparent;
+            border-right: 80px solid transparent;
+            border-bottom: 130px solid #0a4;
+        }
+
+        .tree::after {
+            content: "";
+            position: absolute;
+            bottom: 180%;
+            left: -60px;
+            border-left: 60px solid transparent;
+            border-right: 60px solid transparent;
+            border-bottom: 110px solid #0a4;
+        }
+
+        /* Trunk at the bottom of main triangle */
+        .trunk {
+            position: absolute;
+            bottom: -50px;
+            left: -25px;
+            width: 50px;
+            height: 50px;
+            background: #633;
+            border-radius: 8px;
+        }
+
+        /* Ornaments on tree */
+        .ornament {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: gold;
+            animation: ornament-twinkle 2s infinite alternate ease-in-out;
+        }
+
+        @keyframes ornament-twinkle {
+            from {
+                opacity: 0.5;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Adjust these positions as desired */
+        .orn1 {
+            top: 40px;
+            left: 10px;
+            background: red;
+        }
+
+        .orn2 {
+            top: 70px;
+            left: -40px;
+            background: blue;
+        }
+
+        .orn3 {
+            top: 90px;
+            left: 30px;
+            background: gold;
+        }
+
+        .orn4 {
+            top: 110px;
+            left: -20px;
+            background: lime;
+        }
+
+        .orn5 {
+            top: 130px;
+            left: 5px;
+            background: pink;
+        }
+
+        /* Reindeer (enlarged) */
+        .reindeer {
+            position: absolute;
+            bottom: 10%;
+            right: 10%;
+            width: 150px;
+            height: 120px;
+            background: url('https://cdn.pixabay.com/photo/2023/11/11/04/03/christmas-8380345_1280.png') no-repeat center/cover;
+            animation: bounce 3s infinite ease-in-out;
+        }
+
+        @keyframes bounce {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Fireworks Canvas (CreateJS) -->
+    <canvas id="canvas"></canvas>
+
+    <!-- Scene on top of the canvas -->
+    <div class="scene">
+        <!-- Snow (added via JS below) -->
+
+        <!-- Tree + Star + Ornaments -->
+        <div class="tree-wrapper">
+            <div class="tree-star"></div>
+            <div class="tree">
+                <div class="trunk"></div>
+                <div class="ornament orn1"></div>
+                <div class="ornament orn2"></div>
+                <div class="ornament orn3"></div>
+                <div class="ornament orn4"></div>
+                <div class="ornament orn5"></div>
+            </div>
+        </div>
+
+        <!-- Reindeer -->
+        <div class="reindeer"></div>
+    </div>
+
+    <!-- Snowfall Script -->
+    <script>
+        const scene = document.querySelector(".scene");
+        function createSnowflake() {
+            const snowflake = document.createElement("div");
+            snowflake.classList.add("snowflake");
+
+            // Random size
+            const size = Math.random() * 8 + 5;
+            snowflake.style.width = size + "px";
+            snowflake.style.height = size + "px";
+
+            // Random horizontal position
+            snowflake.style.left = Math.random() * 100 + "%";
+
+            // Random fall duration
+            const fallDuration = Math.random() * 5 + 4;
+            snowflake.style.animationDuration = fallDuration + "s";
+
+            scene.appendChild(snowflake);
+
+            // Remove snowflake once it's off-screen
+            setTimeout(() => {
+                snowflake.remove();
+            }, fallDuration * 1000);
+        }
+
+        // Generate snowflakes periodically
+        setInterval(createSnowflake, 300);
+    </script>
+
+    <!-- CreateJS for Fireworks -->
+    <script src="https://code.createjs.com/1.0.0/createjs.min.js"></script>
+
+    <!-- Fireworks Script -->
+    <script>
+        (function () {
+            var Fireworks, GRAVITY, K, SPEED, ToRadian, canvas, context, ctx, fireBoss, repeat, stage;
+
+            canvas = document.getElementById("canvas");
+            context = canvas.getContext("2d");
+
+            // Set canvas size
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+
+            // CreateJS Stage
+            stage = new createjs.Stage(canvas);
+            stage.autoClear = false;  // Keep old drawings for a trailing effect
+            ctx = canvas.getContext("2d");
+
+            // Initial transparent fill
+            ctx.fillStyle = "rgba(0, 0, 0, 0)";
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            createjs.Ticker.setFPS(50);
+            createjs.Touch.enable(stage);
+            stage.update();
+
+            // Gravity
+            GRAVITY = 1;
+            // Resistance
+            K = 0.9;
+            // Speed
+            SPEED = 12;
+            // Degrees to Radians
+            ToRadian = function (degree) {
+                return degree * Math.PI / 180.0;
+            };
+
+            // Fireworks class
+            Fireworks = class Fireworks {
+                constructor(sx = 100, sy = 100, particles = 70) {
+                    var circle, i, j, rad, ref, speed;
+                    this.sx = sx;
+                    this.sy = sy;
+                    this.particles = particles;
+                    this.sky = new createjs.Container();
+                    this.r = 0;
+                    this.h = Math.random() * 360 | 0;
+                    this.s = 100;
+                    this.l = 50;
+                    this.size = 3;
+
+                    // Create particles
+                    for (i = j = 0, ref = this.particles; (0 <= ref ? j < ref : j > ref); i = 0 <= ref ? ++j : --j) {
+                        speed = Math.random() * 12 + 2;
+                        circle = new createjs.Shape();
+                        circle.graphics
+                            .f(`hsla(${this.h}, ${this.s}%, ${this.l}%, 1)`)
+                            .dc(0, 0, this.size);
+                        circle.snapToPixel = true;
+                        circle.compositeOperation = "lighter";
+
+                        rad = ToRadian(Math.random() * 360 | 0);
+
+                        circle.set({
+                            x: this.sx,
+                            y: this.sy,
+                            vx: Math.cos(rad) * speed,
+                            vy: Math.sin(rad) * speed,
+                            rad: rad
+                        });
+
+                        this.sky.addChild(circle);
+                    }
+
+                    stage.addChild(this.sky);
+                }
+
+                explode() {
+                    if (!this.sky) return;
+                    ++this.h; // shift hue slightly each tick
+
+                    for (let p = 0; p < this.sky.getNumChildren(); p++) {
+                        let circle = this.sky.getChildAt(p);
+
+                        // Slow down
+                        circle.vx *= K;
+                        circle.vy *= K;
+
+                        // Gravity + position
+                        circle.x += circle.vx;
+                        circle.y += circle.vy + GRAVITY;
+
+                        // Random luminance each frame
+                        this.l = Math.random() * 100;
+
+                        // Shrink particle size slightly
+                        this.size = this.size - 0.001;
+                        if (this.size > 0) {
+                            circle.graphics
+                                .c()
+                                .f(`hsla(${this.h}, 100%, ${this.l}%, 1)`)
+                                .dc(0, 0, this.size);
+                        }
+                    }
+
+                    // Fade out container
+                    if (this.sky.alpha > 0.1) {
+                        this.sky.alpha -= K / 50;
+                    } else {
+                        stage.removeChild(this.sky);
+                        this.sky = null;
+                    }
+                }
+            };
+
+            fireBoss = [];
+
+            // Light "fade" effect on the canvas. Lower alpha = less darkening.
+            setInterval(function () {
+                ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+            }, 50);
+
+            // Periodically launch random fireworks
+            setInterval(function () {
+                let x = Math.random() * canvas.width | 0;
+                let y = Math.random() * canvas.height | 0;
+                fireBoss.push(new Fireworks(x, y));
+                fireBoss.push(new Fireworks(x, y));
+            }, 1300);
+
+            // Main loop: update fireworks
+            repeat = function () {
+                for (let i = 0; i < fireBoss.length; i++) {
+                    if (fireBoss[i].sky) {
+                        fireBoss[i].explode();
+                    }
+                }
+                stage.update();
+            };
+
+            createjs.Ticker.on("tick", repeat);
+
+            // Click to launch fireworks at cursor
+            stage.addEventListener("stagemousedown", function () {
+                fireBoss.push(new Fireworks(stage.mouseX, stage.mouseY));
+                fireBoss.push(new Fireworks(stage.mouseX, stage.mouseY));
+            });
+        }).call(this);
+    </script>
+</body>
+
+</html>

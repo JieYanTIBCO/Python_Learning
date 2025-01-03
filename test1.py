@@ -1,18 +1,17 @@
-import cudf
-import numpy as np
 
-# Generate a large dataset
-n_rows = 10_000_000  # 10 million rows
-data = {
-    'category': np.random.choice(['A', 'B', 'C', 'D'], size=n_rows),
-    'value': np.random.rand(n_rows)
-}
+from curses.ascii import isalpha, isdigit, ispunct, isspace
 
-# Create a cuDF DataFrame
-gdf = cudf.DataFrame(data)
 
-# Perform a grouped aggregation
-result = gdf.groupby('category').agg({'value': ['mean', 'sum', 'count']})
+str1 = r"% hello world! 123^&*()"
 
-# Display the result
-print(result)
+for char in str1:
+    if isdigit(char):
+        print(f"digit:{char}")
+    elif isalpha(char):
+        print(f"alpha:{char}")
+    elif isspace(char):
+        print(f"space:{char}")
+    elif ispunct(char):
+        print(f"punct:{char}")
+    else:
+        pass
