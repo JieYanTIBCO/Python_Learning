@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON Formatter Tool</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f9;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        textarea {
+            width: 100%;
+            height: 200px;
+            padding: 10px;
+            font-family: monospace;
+            font-size: 14px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+
+        button {
+            padding: 10px 15px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        pre {
+            background: #f9f9f9;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+
+        .error {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>JSON Formatter Tool</h1>
+    <div class="container">
+        <textarea id="jsonInput" placeholder="Paste your JSON here..."></textarea>
+        <button onclick="formatJSON()">Format JSON</button>
+        <button onclick="clearJSON()">Clear</button>
+        <div style="margin-top: 20px;">
+            <input type="file" id="fileInput" accept=".json">
+            <button onclick="uploadJSON()">Upload JSON</button>
+        </div>
+        <div id="output"></div>
+    </div>
+    <script>
+        function formatJSON() {
+            const input = document.getElementById('jsonInput').value;
+            const outputDiv = document.getElementById('output');
+            outputDiv.innerHTML = ''; // Clear previous output
+
+            try {
+                const parsedJSON = JSON.parse(input);
+                const formattedJSON = JSON.stringify(parsedJSON, null, 4);
+                outputDiv.innerHTML = `<pre>${formattedJSON}</pre>`;
+            } catch (error) {
+                outputDiv.innerHTML = `<div class="error">Invalid JSON: ${error.message}</div>`;
+            }
+        }
+
+        function clearJSON() {
+            document.getElementById('jsonInput').value = '';
+            document.getElementById('output').innerHTML = '';
+        }
+
+        function uploadJSON() {
+            const fileInput = document.getElementById('fileInput');
+            const file = fileInput.files[0];
+            const outputDiv = document.getElementById('output');
+
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function (event) {
+                    try {
+                        const parsedJSON = JSON.parse(event.target.result);
+                        const formattedJSON = JSON.stringify(parsedJSON, null, 4);
+                        outputDiv.innerHTML = `<pre>${formattedJSON}</pre>`;
+                    } catch (error) {
+                        outputDiv.innerHTML = `<div class="error">Invalid JSON: ${error.message}</div>`;
+                    }
+                };
+                reader.readAsText(file);
+            } else {
+                outputDiv.innerHTML = '<div class="error">No file selected. Please choose a JSON file.</div>';
+            }
+        }
+    </script>
+</body>
+
+</html>

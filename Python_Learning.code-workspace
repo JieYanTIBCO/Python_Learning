@@ -7,5 +7,7 @@
 			"path": "../Database_Match_Migration"
 		}
 	],
-	"settings": {}
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "Python_Learning"
+	}
 }

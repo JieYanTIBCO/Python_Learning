@@ -3,20 +3,11 @@ from logging.handlers import RotatingFileHandler
 from datetime import datetime
 import pytz
 import os
+import sys
 
 
 def setup_logging(log_level=logging.DEBUG, log_file="application.log"):
-    """
-    Configure the logging system with timezone support.
-    :param log_level: The logging level, e.g., DEBUG, INFO, etc.
-    :param log_file: The log file name.
-    """
-
     class TimezoneFormatter(logging.Formatter):
-        """
-        Custom logging formatter to include timezone-aware timestamps.
-        """
-
         def __init__(self, fmt=None, datefmt=None, timezone=None):
             super().__init__(fmt=fmt, datefmt=datefmt)
             self.timezone = timezone
@@ -25,41 +16,68 @@ def setup_logging(log_level=logging.DEBUG, log_file="application.log"):
             dt = datetime.fromtimestamp(record.created, tz=self.timezone)
             if datefmt:
                 return dt.strftime(datefmt)
-            return dt.isoformat()
+            return dt.strftime("%Y-%m-%d %H:%M:%S %Z")
 
     try:
-        # Get the local timezone from the operating system
-        # Default to EDT (New York)
-        local_tz = pytz.timezone(os.environ.get("TZ", "America/New_York"))
+        tz_name = os.environ.get("TZ", "America/New_York")
+        try:
+            local_tz = pytz.timezone(tz_name)
+        except pytz.UnknownTimeZoneError:
+            local_tz = pytz.timezone("UTC")
+            print(f"Unknown timezone '{tz_name}', defaulting to UTC.")
 
-        # Define the log format with timezone-aware timestamps
-        log_format = "%(asctime)s - %(levelname)s - [%(threadName)s] - %(message)s"
-
-        # Set up the custom formatter
+        log_format = "%(asctime)s - %(levelname)s - [%(threadName)s] - [%(module)s.%(funcName)s] - %(message)s"
         formatter = TimezoneFormatter(fmt=log_format, timezone=local_tz)
 
-        # Configure handlers
+        max_log_size = 25 * 1024 * 1024
+        backup_count = 7
         file_handler = RotatingFileHandler(
-            log_file, maxBytes=25 * 1024 * 1024, backupCount=7)
+            log_file, maxBytes=max_log_size, backupCount=backup_count)
         file_handler.setFormatter(formatter)
 
         stream_handler = logging.StreamHandler()
         stream_handler.setFormatter(formatter)
 
-        # Configure the logging system
         logging.basicConfig(level=log_level, handlers=[
                             file_handler, stream_handler])
 
-        logging.info(
-            "Logging has been successfully configured with timezone support.")
-    except Exception as e:
-        print(f"Failed to configure logging: {e}")
-        raise
+        config_details = f"""
+        ============================
+        Logging Configuration Details
+        ============================
+        Log File       : {log_file}
+        Logger Level   : {logging.getLevelName(log_level)}
+        Max File Size  : {max_log_size / (1024 * 1024)} MB
+        Backup Count   : {backup_count}
+        Timezone       : {local_tz.zone}
+        ============================
+        """
+        print(config_details)
 
-# Uncomment the lines below to test the logging configuration
-# if __name__ == "__main__":
-#     setup_logging(log_level=logging.DEBUG)
-#     logger = logging.getLogger(__name__)
-#     logger.info("This is an info message.")
-#     logger.warning("This is a warning message.")
-#     logger.error("This is an error message.")
+        logging.info("Testing logging setup...")
+        logging.debug("Debug level logs are enabled.")
+        logging.warning("Warning level logs are enabled.")
+        logging.error("Error level logs are enabled.")
+
+    except Exception as e:
+        print(f"Failed to configure logging: {e}", file=sys.stderr)
+        sys.exit(1)
+
+
+if __name__ == "__main__":
+    os.environ["TZ"] = "Europe/London"
+    setup_logging()
+    logger = logging.getLogger(__name__)
+    logger.info("Default timezone log entry.")
+
+    # os.environ["TZ"] = "Europe/London"
+    # setup_logging()
+    # logger.info("Europe/London timezone log entry.")
+
+    # os.environ["TZ"] = "Asia/Tokyo"
+    # setup_logging()
+    # logger.info("Asia/Tokyo timezone log entry.")
+
+    # os.environ["TZ"] = "Invalid/Timezone"
+    # setup_logging()
+    # logger.info("Fallback to UTC timezone log entry.")

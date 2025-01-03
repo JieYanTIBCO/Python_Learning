@@ -3559,3 +3559,134 @@
 {'name': 'Eduardo Roberts', 'address': '9218 Antonio Tunnel Apt. 727\nNorth Laura, NH 61890'}
 {'name': 'Lindsay Barrett', 'address': '229 Dennis Mount\nPort Danielport, MH 95388'}
 {'name': 'Kenneth Miller', 'address': '9202 Dennis Throughway Apt. 982\nSouth Roger, WA 96734'}
+2024-12-23T11:42:57.161661-05:00 - INFO - [MainThread] - Logging has been successfully configured with timezone support.
+2024-12-23T11:42:57.161661-05:00 - INFO - [MainThread] - test 123
+2024-12-23 11:44:17 EDT - INFO - [MainThread] - Logging has been successfully configured with timezone support.
+2024-12-23 11:44:17 EDT - INFO - [MainThread] - test 123
+2024-12-23 11:48:03 EDT - INFO - [MainThread] - Logging has been successfully configured with timezone support.
+2024-12-23 11:48:03 EDT - INFO - [MainThread] - Log File: application.log
+2024-12-23 11:48:03 EDT - INFO - [MainThread] - Logger Level: DEBUG
+2024-12-23 11:48:03 EDT - INFO - [MainThread] - Max File Size: 25.0 MB
+2024-12-23 11:48:03 EDT - INFO - [MainThread] - Backup Count: 7
+2024-12-23 11:48:03 EDT - INFO - [MainThread] - Timezone: America/New_York
+2024-12-23 11:48:03 EDT - INFO - [MainThread] - test 123
+2024-12-23 11:49:58 EDT - INFO - [MainThread] - test 123
+2024-12-23 11:54:47 EDT - INFO - [MainThread] - [setup_logging.setup_logging] - Testing logging setup...
+2024-12-23 11:54:47 EDT - DEBUG - [MainThread] - [setup_logging.setup_logging] - Debug level logs are enabled.
+2024-12-23 11:54:47 EDT - WARNING - [MainThread] - [setup_logging.setup_logging] - Warning level logs are enabled.
+2024-12-23 11:54:47 EDT - ERROR - [MainThread] - [setup_logging.setup_logging] - Error level logs are enabled.
+2024-12-23 11:54:47 EDT - INFO - [MainThread] - [test.<module>] - test 123
+2024-12-23 12:01:49 EDT - INFO - [MainThread] - [test.<module>] - Default timezone log entry.
+2024-12-23 12:01:49 EDT - INFO - [MainThread] - [test.<module>] - Europe/London timezone log entry.
+2024-12-23 12:01:49 EDT - INFO - [MainThread] - [test.<module>] - Asia/Tokyo timezone log entry.
+2024-12-23 12:01:49 EDT - INFO - [MainThread] - [test.<module>] - Fallback to UTC timezone log entry.
+2024-12-23 12:02:14 EDT - INFO - [MainThread] - [setup_logging.setup_logging] - Testing logging setup...
+2024-12-23 12:02:14 EDT - DEBUG - [MainThread] - [setup_logging.setup_logging] - Debug level logs are enabled.
+2024-12-23 12:02:14 EDT - WARNING - [MainThread] - [setup_logging.setup_logging] - Warning level logs are enabled.
+2024-12-23 12:02:14 EDT - ERROR - [MainThread] - [setup_logging.setup_logging] - Error level logs are enabled.
+2024-12-23 12:02:14 EDT - INFO - [MainThread] - [setup_logging.<module>] - Default timezone log entry.
+2024-12-23 12:02:14 EDT - INFO - [MainThread] - [setup_logging.setup_logging] - Testing logging setup...
+2024-12-23 12:02:14 EDT - DEBUG - [MainThread] - [setup_logging.setup_logging] - Debug level logs are enabled.
+2024-12-23 12:02:14 EDT - WARNING - [MainThread] - [setup_logging.setup_logging] - Warning level logs are enabled.
+2024-12-23 12:02:14 EDT - ERROR - [MainThread] - [setup_logging.setup_logging] - Error level logs are enabled.
+2024-12-23 12:02:14 EDT - INFO - [MainThread] - [setup_logging.<module>] - Europe/London timezone log entry.
+2024-12-23 12:02:14 EDT - INFO - [MainThread] - [setup_logging.setup_logging] - Testing logging setup...
+2024-12-23 12:02:14 EDT - DEBUG - [MainThread] - [setup_logging.setup_logging] - Debug level logs are enabled.
+2024-12-23 12:02:14 EDT - WARNING - [MainThread] - [setup_logging.setup_logging] - Warning level logs are enabled.
+2024-12-23 12:02:14 EDT - ERROR - [MainThread] - [setup_logging.setup_logging] - Error level logs are enabled.
+2024-12-23 12:02:14 EDT - INFO - [MainThread] - [setup_logging.<module>] - Asia/Tokyo timezone log entry.
+2024-12-23 12:02:14 EDT - INFO - [MainThread] - [setup_logging.setup_logging] - Testing logging setup...
+2024-12-23 12:02:14 EDT - DEBUG - [MainThread] - [setup_logging.setup_logging] - Debug level logs are enabled.
+2024-12-23 12:02:14 EDT - WARNING - [MainThread] - [setup_logging.setup_logging] - Warning level logs are enabled.
+2024-12-23 12:02:14 EDT - ERROR - [MainThread] - [setup_logging.setup_logging] - Error level logs are enabled.
+2024-12-23 12:02:14 EDT - INFO - [MainThread] - [setup_logging.<module>] - Fallback to UTC timezone log entry.
+2024-12-23 12:06:24 EST - INFO - [MainThread] - [setup_logging.setup_logging] - Testing logging setup...
+2024-12-23 12:06:24 EST - DEBUG - [MainThread] - [setup_logging.setup_logging] - Debug level logs are enabled.
+2024-12-23 12:06:24 EST - WARNING - [MainThread] - [setup_logging.setup_logging] - Warning level logs are enabled.
+2024-12-23 12:06:24 EST - ERROR - [MainThread] - [setup_logging.setup_logging] - Error level logs are enabled.
+2024-12-23 12:06:24 EST - INFO - [MainThread] - [setup_logging.<module>] - Default timezone log entry.
+2024-12-23 12:06:24 EST - INFO - [MainThread] - [setup_logging.setup_logging] - Testing logging setup...
+2024-12-23 12:06:24 EST - DEBUG - [MainThread] - [setup_logging.setup_logging] - Debug level logs are enabled.
+2024-12-23 12:06:24 EST - WARNING - [MainThread] - [setup_logging.setup_logging] - Warning level logs are enabled.
+2024-12-23 12:06:24 EST - ERROR - [MainThread] - [setup_logging.setup_logging] - Error level logs are enabled.
+2024-12-23 12:06:24 EST - INFO - [MainThread] - [setup_logging.<module>] - Europe/London timezone log entry.
+2024-12-23 12:06:24 EST - INFO - [MainThread] - [setup_logging.setup_logging] - Testing logging setup...
+2024-12-23 12:06:24 EST - DEBUG - [MainThread] - [setup_logging.setup_logging] - Debug level logs are enabled.
+2024-12-23 12:06:24 EST - WARNING - [MainThread] - [setup_logging.setup_logging] - Warning level logs are enabled.
+2024-12-23 12:06:24 EST - ERROR - [MainThread] - [setup_logging.setup_logging] - Error level logs are enabled.
+2024-12-23 12:06:24 EST - INFO - [MainThread] - [setup_logging.<module>] - Asia/Tokyo timezone log entry.
+2024-12-23 12:06:24 EST - INFO - [MainThread] - [setup_logging.setup_logging] - Testing logging setup...
+2024-12-23 12:06:24 EST - DEBUG - [MainThread] - [setup_logging.setup_logging] - Debug level logs are enabled.
+2024-12-23 12:06:24 EST - WARNING - [MainThread] - [setup_logging.setup_logging] - Warning level logs are enabled.
+2024-12-23 12:06:24 EST - ERROR - [MainThread] - [setup_logging.setup_logging] - Error level logs are enabled.
+2024-12-23 12:06:24 EST - INFO - [MainThread] - [setup_logging.<module>] - Fallback to UTC timezone log entry.
+2024-12-23 12:08:18 EST - INFO - [MainThread] - [setup_logging.setup_logging] - Testing logging setup...
+2024-12-23 12:08:18 EST - DEBUG - [MainThread] - [setup_logging.setup_logging] - Debug level logs are enabled.
+2024-12-23 12:08:18 EST - WARNING - [MainThread] - [setup_logging.setup_logging] - Warning level logs are enabled.
+2024-12-23 12:08:18 EST - ERROR - [MainThread] - [setup_logging.setup_logging] - Error level logs are enabled.
+2024-12-23 12:08:18 EST - INFO - [MainThread] - [setup_logging.<module>] - Default timezone log entry.
+2024-12-23 12:08:18 EST - INFO - [MainThread] - [setup_logging.setup_logging] - Testing logging setup...
+2024-12-23 12:08:18 EST - DEBUG - [MainThread] - [setup_logging.setup_logging] - Debug level logs are enabled.
+2024-12-23 12:08:18 EST - WARNING - [MainThread] - [setup_logging.setup_logging] - Warning level logs are enabled.
+2024-12-23 12:08:18 EST - ERROR - [MainThread] - [setup_logging.setup_logging] - Error level logs are enabled.
+2024-12-23 12:08:18 EST - INFO - [MainThread] - [setup_logging.<module>] - Europe/London timezone log entry.
+2024-12-23 12:08:18 EST - INFO - [MainThread] - [setup_logging.setup_logging] - Testing logging setup...
+2024-12-23 12:08:18 EST - DEBUG - [MainThread] - [setup_logging.setup_logging] - Debug level logs are enabled.
+2024-12-23 12:08:18 EST - WARNING - [MainThread] - [setup_logging.setup_logging] - Warning level logs are enabled.
+2024-12-23 12:08:18 EST - ERROR - [MainThread] - [setup_logging.setup_logging] - Error level logs are enabled.
+2024-12-23 12:08:18 EST - INFO - [MainThread] - [setup_logging.<module>] - Asia/Tokyo timezone log entry.
+2024-12-23 12:08:18 EST - INFO - [MainThread] - [setup_logging.setup_logging] - Testing logging setup...
+2024-12-23 12:08:18 EST - DEBUG - [MainThread] - [setup_logging.setup_logging] - Debug level logs are enabled.
+2024-12-23 12:08:18 EST - WARNING - [MainThread] - [setup_logging.setup_logging] - Warning level logs are enabled.
+2024-12-23 12:08:18 EST - ERROR - [MainThread] - [setup_logging.setup_logging] - Error level logs are enabled.
+2024-12-23 12:08:18 EST - INFO - [MainThread] - [setup_logging.<module>] - Fallback to UTC timezone log entry.
+2024-12-23 12:08:27 EST - INFO - [MainThread] - [setup_logging.setup_logging] - Testing logging setup...
+2024-12-23 12:08:27 EST - DEBUG - [MainThread] - [setup_logging.setup_logging] - Debug level logs are enabled.
+2024-12-23 12:08:27 EST - WARNING - [MainThread] - [setup_logging.setup_logging] - Warning level logs are enabled.
+2024-12-23 12:08:27 EST - ERROR - [MainThread] - [setup_logging.setup_logging] - Error level logs are enabled.
+2024-12-23 12:08:27 EST - INFO - [MainThread] - [setup_logging.<module>] - Default timezone log entry.
+2024-12-23 12:08:27 EST - INFO - [MainThread] - [setup_logging.setup_logging] - Testing logging setup...
+2024-12-23 12:08:27 EST - DEBUG - [MainThread] - [setup_logging.setup_logging] - Debug level logs are enabled.
+2024-12-23 12:08:27 EST - WARNING - [MainThread] - [setup_logging.setup_logging] - Warning level logs are enabled.
+2024-12-23 12:08:27 EST - ERROR - [MainThread] - [setup_logging.setup_logging] - Error level logs are enabled.
+2024-12-23 12:08:27 EST - INFO - [MainThread] - [setup_logging.<module>] - Europe/London timezone log entry.
+2024-12-23 12:08:27 EST - INFO - [MainThread] - [setup_logging.setup_logging] - Testing logging setup...
+2024-12-23 12:08:27 EST - DEBUG - [MainThread] - [setup_logging.setup_logging] - Debug level logs are enabled.
+2024-12-23 12:08:27 EST - WARNING - [MainThread] - [setup_logging.setup_logging] - Warning level logs are enabled.
+2024-12-23 12:08:27 EST - ERROR - [MainThread] - [setup_logging.setup_logging] - Error level logs are enabled.
+2024-12-23 12:08:27 EST - INFO - [MainThread] - [setup_logging.<module>] - Asia/Tokyo timezone log entry.
+2024-12-23 12:08:27 EST - INFO - [MainThread] - [setup_logging.setup_logging] - Testing logging setup...
+2024-12-23 12:08:27 EST - DEBUG - [MainThread] - [setup_logging.setup_logging] - Debug level logs are enabled.
+2024-12-23 12:08:27 EST - WARNING - [MainThread] - [setup_logging.setup_logging] - Warning level logs are enabled.
+2024-12-23 12:08:27 EST - ERROR - [MainThread] - [setup_logging.setup_logging] - Error level logs are enabled.
+2024-12-23 12:08:27 EST - INFO - [MainThread] - [setup_logging.<module>] - Fallback to UTC timezone log entry.
+2024-12-23 12:10:54 EST - INFO - [MainThread] - [setup_logging.setup_logging] - Testing logging setup...
+2024-12-23 12:10:54 EST - DEBUG - [MainThread] - [setup_logging.setup_logging] - Debug level logs are enabled.
+2024-12-23 12:10:54 EST - WARNING - [MainThread] - [setup_logging.setup_logging] - Warning level logs are enabled.
+2024-12-23 12:10:54 EST - ERROR - [MainThread] - [setup_logging.setup_logging] - Error level logs are enabled.
+2024-12-23 12:10:54 EST - INFO - [MainThread] - [setup_logging.<module>] - Default timezone log entry.
+2024-12-23 12:10:54 EST - INFO - [MainThread] - [setup_logging.setup_logging] - Testing logging setup...
+2024-12-23 12:10:54 EST - DEBUG - [MainThread] - [setup_logging.setup_logging] - Debug level logs are enabled.
+2024-12-23 12:10:54 EST - WARNING - [MainThread] - [setup_logging.setup_logging] - Warning level logs are enabled.
+2024-12-23 12:10:54 EST - ERROR - [MainThread] - [setup_logging.setup_logging] - Error level logs are enabled.
+2024-12-23 12:10:54 EST - INFO - [MainThread] - [setup_logging.<module>] - Europe/London timezone log entry.
+2024-12-23 12:10:54 EST - INFO - [MainThread] - [setup_logging.setup_logging] - Testing logging setup...
+2024-12-23 12:10:54 EST - DEBUG - [MainThread] - [setup_logging.setup_logging] - Debug level logs are enabled.
+2024-12-23 12:10:54 EST - WARNING - [MainThread] - [setup_logging.setup_logging] - Warning level logs are enabled.
+2024-12-23 12:10:54 EST - ERROR - [MainThread] - [setup_logging.setup_logging] - Error level logs are enabled.
+2024-12-23 12:10:54 EST - INFO - [MainThread] - [setup_logging.<module>] - Asia/Tokyo timezone log entry.
+2024-12-23 12:10:54 EST - INFO - [MainThread] - [setup_logging.setup_logging] - Testing logging setup...
+2024-12-23 12:10:54 EST - DEBUG - [MainThread] - [setup_logging.setup_logging] - Debug level logs are enabled.
+2024-12-23 12:10:54 EST - WARNING - [MainThread] - [setup_logging.setup_logging] - Warning level logs are enabled.
+2024-12-23 12:10:54 EST - ERROR - [MainThread] - [setup_logging.setup_logging] - Error level logs are enabled.
+2024-12-23 12:10:54 EST - INFO - [MainThread] - [setup_logging.<module>] - Fallback to UTC timezone log entry.
+2024-12-23 17:11:10 GMT - INFO - [MainThread] - [setup_logging.setup_logging] - Testing logging setup...
+2024-12-23 17:11:10 GMT - DEBUG - [MainThread] - [setup_logging.setup_logging] - Debug level logs are enabled.
+2024-12-23 17:11:10 GMT - WARNING - [MainThread] - [setup_logging.setup_logging] - Warning level logs are enabled.
+2024-12-23 17:11:10 GMT - ERROR - [MainThread] - [setup_logging.setup_logging] - Error level logs are enabled.
+2024-12-23 17:11:10 GMT - INFO - [MainThread] - [setup_logging.<module>] - Default timezone log entry.
+2024-12-24 02:11:47 JST - INFO - [MainThread] - [setup_logging.setup_logging] - Testing logging setup...
+2024-12-24 02:11:47 JST - DEBUG - [MainThread] - [setup_logging.setup_logging] - Debug level logs are enabled.
+2024-12-24 02:11:47 JST - WARNING - [MainThread] - [setup_logging.setup_logging] - Warning level logs are enabled.
+2024-12-24 02:11:47 JST - ERROR - [MainThread] - [setup_logging.setup_logging] - Error level logs are enabled.
+2024-12-24 02:11:47 JST - INFO - [MainThread] - [test.<module>] - Asia/Tokyo timezone log entry.

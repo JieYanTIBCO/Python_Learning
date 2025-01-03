@@ -1,0 +1,158 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+}
+
+.container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+h1 {
+    color: #333;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+#upload-section {
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+input[type="file"] {
+    margin-bottom: 20px;
+}
+
+button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+#output {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    overflow-y: auto;
+}
+
+#output strong {
+    color: #007bff;
+    font-weight: bold;
+}
+
+#output .section {
+    margin: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #e6f7ff;
+    position: relative;
+    cursor: move;
+    flex: 0 0 auto;
+}
+
+#output .section.endpoint {
+    background-color: #e6f7ff;
+}
+
+#output .section.feed {
+    background-color: #fffbe6;
+}
+
+#output .section.activity {
+    background-color: #e6ffe6;
+}
+
+#output .section.process {
+    background-color: #ffe6e6;
+}
+
+#output .section.ui {
+    background-color: #f0e6ff;
+}
+
+#output .section.indicators {
+    background-color: #e6f0ff;
+}
+
+#output .section.resources {
+    background-color: #fff0e6;
+}
+
+#output .section.site {
+    background-color: #e6fff0;
+}
+
+#output .section.devices {
+    background-color: #f0ffe6;
+}
+
+#output .section.processing {
+    background-color: #e6e6ff;
+}
+
+#output .section.user {
+    background-color: #ffe6f0;
+}
+
+#output .section.agent {
+    background-color: #f0e6e6;
+}
+
+#output .indent {
+    margin-left: 20px;
+}
+
+#output .item {
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+}
+
+#output a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+#output a:hover {
+    text-decoration: underline;
+}
+
+.hide {
+    display: none;
+}
+
+.drag-over {
+    border: 2px dashed #007bff;
+}
