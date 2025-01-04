@@ -17,7 +17,7 @@ def parse_date(value):
         return None
     for fmt in formats:
         try:
-            return str(datetime.strptime(value, fmt).date())
+            return str(datetime.strptime(value, fmt))
         except ValueError:
             continue
     return None  # Return None if no format matches

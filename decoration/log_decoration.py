@@ -1,7 +1,7 @@
 from functools import wraps
 from typing import Callable, Any, Tuple
 from typing_extensions import get_type_hints
-from setup_logging import get_logger
+from utils.setup_logging import get_logger
 import time
 import random
 import requests  # Example of a network-related library

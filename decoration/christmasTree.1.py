@@ -152,7 +152,7 @@ def display_tree_with_reindeer(size: int, snow_density: float = 0.15, stars_dens
 
 def main() -> None:
     # Parameters
-    tree_size = 61
+    tree_size = 51
     snow_density = 0.08
     stars_density = 0.05
     iterations = 15

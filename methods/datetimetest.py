@@ -1,5 +1,5 @@
 import datetime
-from setup_logging import get_logger
+from utils.setup_logging import get_logger
 
 logger = get_logger()
 if __name__ == "__main__":
@@ -7,4 +7,5 @@ if __name__ == "__main__":
     logger.debug(f"time is {x}")
     
     
+    logger.debug(f"time %A is {x.strftime("%A")}")
     logger.debug(f"time %A is {x.strftime("%A")}")

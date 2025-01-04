@@ -2,3 +2,5 @@
 */lib/
 *.log
 .DS_Store
+test.py
+test1.py

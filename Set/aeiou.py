@@ -1,4 +1,4 @@
-from setup_logging import get_logger
+from utils.setup_logging import get_logger
 
 
 def vowel_count(input_str):

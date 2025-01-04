@@ -2,7 +2,7 @@ import random
 import string
 import logging
 from logging.handlers import RotatingFileHandler
-import setup_logging as sl
+import utils.setup_logging as sl
 
 
 def generate_password(length, ratio=(6, 3, 1)):

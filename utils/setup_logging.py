@@ -76,6 +76,7 @@ def setup_logging(
         ValueError: If invalid parameters provided
     """
     try:
+        print(f"thread name:{__name__}")
         # Parameter validation
         if max_bytes <= 0:
             raise ValueError("max_bytes must be positive")
