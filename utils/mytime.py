@@ -28,6 +28,12 @@ class MyDateTime(datetime):
         """从 datetime 对象创建 MyDateTime 对象"""
         return cls(dt.year, dt.month, dt.day, dt.hour, dt.minute, dt.second, dt.microsecond)
 
+    @classmethod
+    def now(cls):
+        """返回当前时间的 MyDateTime 对象"""
+        now = datetime.now()
+        return cls(now.year, now.month, now.day, now.hour, now.minute, now.second, now.microsecond)
+
 
 # Example usage
 if __name__ == "__main__":
