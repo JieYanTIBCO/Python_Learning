@@ -1,7 +1,7 @@
 from sre_constants import ANY
 from time import sleep
 from typing import Any
-from decoration.log_decoration import log_decoration
+from utils.log_decoration import log_decoration
 from faker import Faker
 import json
 

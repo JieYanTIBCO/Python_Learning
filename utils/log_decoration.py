@@ -84,7 +84,7 @@ def log_decoration(
                     )
                     return result
 
-                except exceptions_to_catch as e:
+                except exceptions_to_catch as e: # type: ignore
                     attempt += 1
                     logger.error(
                         json.dumps({
