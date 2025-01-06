@@ -3690,3 +3690,18 @@
 2024-12-24 02:11:47 JST - WARNING - [MainThread] - [setup_logging.setup_logging] - Warning level logs are enabled.
 2024-12-24 02:11:47 JST - ERROR - [MainThread] - [setup_logging.setup_logging] - Error level logs are enabled.
 2024-12-24 02:11:47 JST - INFO - [MainThread] - [test.<module>] - Asia/Tokyo timezone log entry.
+2025-01-06 09:37:48 -0500 [INFO] 
+===============================
+    Logging Configuration
+===============================
+Level        : DEBUG
+Log File     : C:\Build\Python_Learning\application.log
+Max File Size: 25.00 MB
+Backup Count : 7
+Console Out  : True
+Timezone     : Eastern Standard Time
+===============================
+
+2025-01-06 09:37:48 -0500 [INFO] This is an info message.
+2025-01-06 09:37:48 -0500 [WARNING] This is a warning message.
+2025-01-06 09:37:48 -0500 [ERROR] This is an error message.

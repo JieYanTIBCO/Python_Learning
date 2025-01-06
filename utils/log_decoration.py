@@ -1,13 +1,12 @@
 from functools import wraps
 from typing import Callable, Any, Tuple
 from typing_extensions import get_type_hints
-from utils.setup_logging import get_logger
 import time
 import random
 import requests  # Example of a network-related library
+from utils.setup_logging import get_logger
 import traceback
 import json
-
 # Initialize logger once
 logger = get_logger()
 
@@ -84,7 +83,7 @@ def log_decoration(
                     )
                     return result
 
-                except exceptions_to_catch as e:
+                except exceptions_to_catch as e:  # type: ignore
                     attempt += 1
                     logger.error(
                         json.dumps({

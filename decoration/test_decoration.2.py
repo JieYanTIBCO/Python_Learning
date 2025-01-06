@@ -1,5 +1,5 @@
 from functools import wraps, lru_cache
-from decoration.log_decoration import log_decoration
+from utils.log_decoration import log_decoration
 
 
 @lru_cache(maxsize=None)

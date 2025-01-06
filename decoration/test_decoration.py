@@ -1,7 +1,7 @@
 import pytest
 from utils.setup_logging import get_logger, logging
 # 关键：只从 log_decoration.py 文件中导入 log_decoration 函数
-from decoration.log_decoration import log_decoration
+from utils.log_decoration import log_decoration
 
 
 @log_decoration(max_retries=3)

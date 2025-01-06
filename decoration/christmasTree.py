@@ -1,4 +1,4 @@
-from decoration.log_decoration import log_decoration
+from utils.log_decoration import log_decoration
 import random
 
 
