@@ -84,7 +84,7 @@ def log_decoration(
                     )
                     return result
 
-                except exceptions_to_catch as e: # type: ignore
+                except exceptions_to_catch as e:  # type: ignore
                     attempt += 1
                     logger.error(
                         json.dumps({
@@ -133,7 +133,7 @@ def example_function(x: int, y: int) -> int:
 
 if __name__ == "__main__":
     try:
-        print(f"example_function(1, 2)'s result is :{
-              example_function(0, 2)}")  # Simulates a network error
+        print(f"example_function(0,1)'s result is :{
+              example_function(0, 1)}")  # Simulates a network error
     except Exception as e:
         print(f"Final exception caught: {e}")
