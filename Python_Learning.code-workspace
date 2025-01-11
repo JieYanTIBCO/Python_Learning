@@ -5,6 +5,9 @@
 		},
 		{
 			"path": "../Database_Match_Migration"
+		},
+		{
+			"path": "../VSCodeProjects/setlogging"
 		}
 	],
 	"settings": {
