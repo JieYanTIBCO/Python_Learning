@@ -1,10 +1,10 @@
-from math import e
-import os
+# Standard library imports
+from datetime import datetime, timezone as dt_timezone
+import json
 import logging
 from logging.handlers import RotatingFileHandler
-from datetime import datetime, timezone as dt_timezone
+import os
 from typing import Optional, Union
-import json
 
 
 class TimezoneFormatter(logging.Formatter):
