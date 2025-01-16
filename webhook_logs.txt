@@ -1,0 +1,60 @@
+2025-01-14 23:09:34,742 - INFO - Incident ID: 12345, Status: resolved, Updated At: 2024-03-10T16:00:00Z
+2025-01-14 23:09:49,605 - ERROR - Error processing webhook: 400 Bad Request: The browser (or proxy) sent a request that this server could not understand.
+2025-01-14 23:10:07,715 - WARNING - Missing required fields: {'updated_at'}
+2025-01-14 23:17:56 -0500 [INFO] [MainThread] 
+===============================
+    Logging Configuration
+===============================
+Level        : DEBUG
+Log File     : C:\Build\Python_Learning\webhook_logs.txt
+Max File Size: 25.00 MB
+Backup Count : 7
+Console Out  : True
+Timezone     : Eastern Standard Time
+ProcessID    : 33628
+===============================
+
+2025-01-14 23:17:57 -0500 [INFO] [MainThread] 
+===============================
+    Logging Configuration
+===============================
+Level        : DEBUG
+Log File     : C:\Build\Python_Learning\webhook_logs.txt
+Max File Size: 25.00 MB
+Backup Count : 7
+Console Out  : True
+Timezone     : Eastern Standard Time
+ProcessID    : 2408
+===============================
+
+2025-01-14 23:18:39 -0500 [INFO] [Thread-2 (process_request_thread)] Incident ID: 12345, Status: resolved
+2025-01-14 23:19:05 -0500 [ERROR] [Thread-3 (process_request_thread)] Error processing webhook: 400 Bad Request: Failed to decode JSON object: Unterminated string starting at: line 1 column 62 (char 61)
+2025-01-14 23:22:28 -0500 [INFO] [MainThread] 
+===============================
+    Logging Configuration
+===============================
+Level        : DEBUG
+Log File     : C:\Build\Python_Learning\webhook_logs.txt
+Max File Size: 25.00 MB
+Backup Count : 7
+Console Out  : True
+Timezone     : Eastern Standard Time
+ProcessID    : 34280
+===============================
+
+2025-01-14 23:22:29 -0500 [INFO] [MainThread] 
+===============================
+    Logging Configuration
+===============================
+Level        : DEBUG
+Log File     : C:\Build\Python_Learning\webhook_logs.txt
+Max File Size: 25.00 MB
+Backup Count : 7
+Console Out  : True
+Timezone     : Eastern Standard Time
+ProcessID    : 34240
+===============================
+
+2025-01-14 23:22:52 -0500 [ERROR] [Thread-2 (process_request_thread)] Malformed JSON payload
+2025-01-14 23:23:31 -0500 [ERROR] [Thread-3 (process_request_thread)] Invalid payload or missing required fields
+2025-01-14 23:23:40 -0500 [INFO] [Thread-4 (process_request_thread)] Incident ID: 12345, Status: resolved
