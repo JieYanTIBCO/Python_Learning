@@ -1,5 +1,8 @@
-
 from curses.ascii import isalpha, isdigit, ispunct, isspace
+
+
+def example(param: int) -> str:
+    return f"Received: {param} - Max allowed: {max(100, param)}"
 
 
 str1 = r"% hello world! 123^&*()"
