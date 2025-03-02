@@ -1,7 +1,9 @@
 import random
 import math
 from reportlab.lib.pagesizes import letter
-from reportlab.pdfgen import canvas
+from reportlab.lib.units import mm
+from datetime import datetime
+from .pdf_generator import PDFGenerator
 
 
 def generate_valid_equation_system():
@@ -63,8 +65,8 @@ def generate_valid_equation_system():
 
     # 构建方程格式
     equations = [
-        f"{format_term(a1, 'x')} + {format_term(b1, 'y')} = {c1}",
-        f"{format_term(a2, 'x')} + {format_term(b2, 'y')} = {c2}",
+        f"{{ {format_term(a1, 'x')} + {format_term(b1, 'y')} = {c1} }}",
+        f"{{ {format_term(a2, 'x')} + {format_term(b2, 'y')} = {c2} }}",
     ]
 
     # 格式清理优化
@@ -77,70 +79,121 @@ def generate_valid_equation_system():
     return equations, (x, y)
 
 
-def create_pdf(filename, num_columns=3, equations_per_column=10, page_num=1):
-    """生成包含方程组的PDF文件
-    :param filename: PDF文件名
-    :param num_columns: PDF中列数
-    :param equations_per_column: 每列显示的方程组数量
-    :param page_num: 生成的PDF页数
+def calculate_layout(params):
+    """计算页面布局参数"""
+    page_width, page_height = letter
+    return {
+        "margin": 15 * mm,
+        "column_gap": 10 * mm,
+        "base_y": page_height - 20 * mm,
+        "line_height": 7 * mm,
+        "footer_y": 15 * mm,
+        "equations_per_page": params["num_columns"] * params["equations_per_column"],
+        "column_width": (
+            page_width
+            - 2 * params["margin"]
+            - (params["num_columns"] - 1) * params["column_gap"]
+        )
+        / params["num_columns"],
+    }
 
-    生成的PDF文件包含多个页面，每个页面包含多个列，每列包含多个方程组并带有编号。
-    在页脚显示整页方程组的解有编号，字体要很小。
-    """
-    c = canvas.Canvas(filename, pagesize=letter)
-    width, height = letter
 
-    # 页面设置
-    margin = 20
-    column_width = (width - 2 * margin) / num_columns
-    start_x = margin
-    start_y = height - margin
-    line_height = 20
-    footer_height = 30
+def draw_equation(c, x, y, eq_num, equations, line_height):
+    """绘制带编号的方程组"""
+    c.setFont("Helvetica-Bold", 10)
+    c.drawString(x, y, f"{eq_num}.")
+    c.setFont("Helvetica", 12)
 
-    # 存储所有解
+    # 绘制方程组
+    for i, eq in enumerate(equations):
+        c.drawString(x + 8 * mm, y - i * line_height, eq)
+
+    return y - (len(equations) + 1) * line_height  # 题目间间隔
+
+
+def print_page(c, params, layout, equations, page_num, total_pages):
+    """打印单个页面"""
+    page_width, page_height = letter
     solutions = []
-    equations_on_page = 0
-    column = 0
-    y = start_y
 
-    for idx in range(1, num_columns * equations_per_column + 1):
-        equations, solution = generate_valid_equation_system()
-        eq1, eq2 = equations
-        solutions.append(solution)
+    # 初始化坐标
+    x_positions = [
+        layout["margin"] + i * (layout["column_width"] + layout["column_gap"])
+        for i in range(params["num_columns"])
+    ]
+    y_positions = [layout["base_y"]] * params["num_columns"]
 
-        if equations_on_page % equations_per_column == 0 and equations_on_page > 0:
-            column += 1
-            y = start_y
+    # 绘制页眉
+    c.setFont("Helvetica", 8)
+    c.drawRightString(
+        page_width - layout["margin"],
+        page_height - 12 * mm,
+        f"Page {page_num}/{total_pages}",
+    )
 
-        if column >= num_columns:
-            # 添加页脚解
-            c.setFont("Helvetica", 6)
-            footer_text = "Solutions: "
-            for i, sol in enumerate(solutions[-equations_per_column:]):
-                footer_text += f"{i+1}. ({sol[0]}, {sol[1]})  "
-            c.drawString(margin, footer_height, footer_text)
-            c.showPage()
-            column = 0
-            y = start_y
+    # 绘制方程组
+    for col in range(params["num_columns"]):
+        x = x_positions[col]
+        y = y_positions[col]
 
-        x = start_x + column * column_width
-        c.setFont("Helvetica", 10)
-        c.drawString(x, y, f"{{ {eq1} }}")
-        y -= line_height
-        c.drawString(x, y, f"{{ {eq2} }}")
-        y -= line_height * 2  # 空一行
+        for idx in range(params["equations_per_column"]):
+            eq_num = (
+                (page_num - 1) * layout["equations_per_page"]
+                + col * params["equations_per_column"]
+                + idx
+                + 1
+            )
 
-        equations_on_page += 1
+            # 检查是否超出方程组总数
+            if eq_num - 1 >= len(equations):
+                break
 
-    # 添加最后一页的页脚解
+            eq_data = equations[eq_num - 1]
+            equations_obj, solution = eq_data
+            solutions.append(solution)
+
+            # 绘制方程组
+            y = draw_equation(
+                c,
+                x,
+                y,
+                eq_num,
+                equations_obj,
+                layout["line_height"],
+            )
+
+    # 绘制页脚解答
     c.setFont("Helvetica", 6)
-    footer_text = "Solutions: "
-    for i, sol in enumerate(solutions[-equations_per_column:]):
-        footer_text += f"{i+1}. ({sol[0]}, {sol[1]})  "
-    c.drawString(margin, footer_height, footer_text)
-    c.save()
+    footer_text = "  ".join([f"{i+1}.({s[0]},{s[1]})" for i, s in enumerate(solutions)])
+    c.drawString(layout["margin"], layout["footer_y"], footer_text)
+
+
+def create_pdf(filename, num_columns=3, equations_per_column=10, page_num=1):
+    """生成PDF文件"""
+    # 预生成所有方程组
+    total_equations = num_columns * equations_per_column * page_num
+    all_equations = []
+    all_solutions = []
+
+    while len(all_equations) < total_equations:
+        eq, sol = generate_valid_equation_system()
+        all_equations.append(eq)
+        all_solutions.append(sol)
+
+    # 使用PDFGenerator生成PDF
+    pdf = PDFGenerator(filename, num_columns, equations_per_column)
+    pdf.generate_pdf(all_equations, all_solutions)
 
 
 if __name__ == "__main__":
-    create_pdf("./equations.pdf", num_columns=3, equations_per_column=3, page_num=3)
+    # 生成方程组
+    # pdf文件名，每列题目数量，总页数
+    # 文件名带时间戳
+    pdf_filename = f"./equations_{datetime.now().strftime('%Y%m%d%H%M%S')}.pdf"
+
+    create_pdf(
+        pdf_filename,
+        num_columns=3,
+        equations_per_column=5,  # 每列题目数量
+        page_num=3,  # 总页数
+    )
