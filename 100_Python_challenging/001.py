@@ -45,7 +45,8 @@ b = int(input("Please input a integer value b:"))
 
 if a <= b:
     pass
-else: a,b=b,a
+else:
+    a, b = b, a
 
 result = [n for n in range(a, b + 1) if n % 7 == 0 and n % 5 != 0]
 

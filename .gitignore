@@ -1,9 +1,29 @@
-/.venv/
-*/lib/
+# Python bytecode files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Distribution / packaging
+dist/
+build/
+*.egg-info/
+
+# Logs
 *.log
+
+# OS specific files
 .DS_Store
+
+# Specific project files to ignore
 test.py
 test1.py
 application_log.json
 
+# Project folders to ignore
 /testproject
+
+# If you want to track your virtual environment, remove the .venv entry 
+# But note: generally it's best practice NOT to commit virtual environments
+/.venv/
+/lib/
+
