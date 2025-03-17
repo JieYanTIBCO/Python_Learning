@@ -3,8 +3,6 @@
 # D means deposit while W means withdrawal. Suppose the following input is supplied to the program: D 300 D 300 W 200 D 100 Then, the output should be: 500
 
 # Custom exception class (optional, for clarity)
-from sys import exception
-from math import e
 import json
 
 
@@ -29,7 +27,9 @@ class InvalidTransactionError(Exception):
         if self.amount is not None:
             details.append(f"Amount: {self.amount}")
         details_message = ", ".join(details)
-        return f"{base_message}. Details: {details_message}" if details else base_message
+        return (
+            f"{base_message}. Details: {details_message}" if details else base_message
+        )
 
 
 # Define a function for validation
@@ -45,13 +45,15 @@ def validate_transaction_line(line):
 
     # Validate the number of components
     if len(parts) != 3:
-        raise InvalidTransactionError(f"Invalid transaction line format: '{
-                                      line}'. Expected 3 components.")
+        raise InvalidTransactionError(
+            f"Invalid transaction line format: '{
+                                      line}'. Expected 3 components."
+        )
 
     account_name, operation, amount = parts
 
     # Validate operation type
-    if operation not in {'D', 'W'}:
+    if operation not in {"D", "W"}:
         raise InvalidTransactionError(
             f"Invalid operation type: {
                 operation}. Must be 'D' (Deposit) or 'W' (Withdrawal)."
@@ -64,7 +66,8 @@ def validate_transaction_line(line):
             raise ValueError
     except ValueError:
         raise InvalidTransactionError(
-            f"Invalid amount: {amount}. Must be a positive integer.")
+            f"Invalid amount: {amount}. Must be a positive integer."
+        )
 
     return account_name, operation, amount
 
@@ -81,8 +84,7 @@ def balance(file_path):
         for line in lines:
             try:
                 # Call the validation line function to validate account_name, operation, amount and return it back.
-                account_name, operation, amount = validate_transaction_line(
-                    line)
+                account_name, operation, amount = validate_transaction_line(line)
 
                 # Proceed with transaction processing
                 # if account_name is not in the dictionary, set initialed amount
@@ -90,7 +92,7 @@ def balance(file_path):
                     account_balance[account_name] = 0
 
                     # set balance based on operations and make sure balance is not less than 0
-                if operation == 'D':
+                if operation == "D":
                     account_balance[account_name] += amount
                 else:  # operation has already been checked either D or W
                     if account_balance[account_name] < amount:
@@ -109,7 +111,6 @@ def balance(file_path):
     return account_balance
 
 
-account_balance = balance(
-    "./Python_Learning/100_Python_challenging/transactions.log")
+account_balance = balance("./Python_Learning/100_Python_challenging/transactions.log")
 
 print(json.dumps(account_balance, indent=4))

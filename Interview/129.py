@@ -1,6 +1,5 @@
 import csv
 import json
-import xmltodict
 
 
 def read_csv_as_dictionary(filelocation):
@@ -8,7 +7,7 @@ def read_csv_as_dictionary(filelocation):
     with open(filelocation, mode="r", encoding="utf-8") as file:
         csv_reader = csv.DictReader(file, delimiter=";")
         for row in csv_reader:
-            data_dict[row['MDM Person Id']] = row
+            data_dict[row["MDM Person Id"]] = row
     return data_dict
 
 

@@ -1,4 +1,3 @@
-import pandas as pd
 import sqlite3
 
 db_path = r"C:\Users\Jackie\AppData\Roaming\DBeaverData\workspace6\.metadata\sample-database-sqlite-1\Chinook.db"

@@ -1,9 +1,9 @@
 from functools import reduce
-import copy
 
-def odd_multiper(a:list):
+
+def odd_multiper(a: list):
     odd_multiper = reduce(lambda x, y: x * (y if y % 2 != 0 else 1), a, 1)
-    if ( 1 not in a and -1 not in a) and odd_multiper == 1:
+    if (1 not in a and -1 not in a) and odd_multiper == 1:
         return None
     else:
         return odd_multiper
@@ -17,7 +17,6 @@ c = [7, -1, 2, 0, 9, -3, 4, 6]
 print(odd_multiper(a))
 print(odd_multiper(b))
 print(odd_multiper(c))
-
 
 
 # a = [1, 2, 3, 4, 5]

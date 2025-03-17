@@ -1,5 +1,4 @@
 import argparse
-from multiprocessing.util import LOGGER_NAME
 from faker import Faker
 import logging
 from logging.handlers import RotatingFileHandler
@@ -16,10 +15,9 @@ def setup_logging(log_level=logging.DEBUG, log_file="application.log"):
             level=log_level,
             format="%(asctime)s - %(levelname)s - [%(threadName)s] - %(message)s",
             handlers=[
-                RotatingFileHandler(log_file, maxBytes=25 *
-                                    1024 * 1024, backupCount=7),
-                logging.StreamHandler()
-            ]
+                RotatingFileHandler(log_file, maxBytes=25 * 1024 * 1024, backupCount=7),
+                logging.StreamHandler(),
+            ],
         )
         logging.info("Logging has been successfully configured.")
     except Exception as e:
@@ -41,11 +39,11 @@ if __name__ == "__main__":
     setup_logging(log_level=logging.DEBUG)
 
     parser = argparse.ArgumentParser(
-        description="This is command to print fake name with address dictionary!")
+        description="This is command to print fake name with address dictionary!"
+    )
 
     parser.add_argument("-n", "--number", type=int, help="the number of name")
-    parser.add_argument("-v", "--verbose",
-                        action="store_true", help="是否打印详细信息")
+    parser.add_argument("-v", "--verbose", action="store_true", help="是否打印详细信息")
     # parse parameters with -n and -v
     args = parser.parse_args()
 
@@ -54,4 +52,4 @@ if __name__ == "__main__":
     logging.info(f"-n is: {args.number}")
 
     if args.verbose:
-        logging.debug('\n'.join(str(d) for d in lst_dict))
+        logging.debug("\n".join(str(d) for d in lst_dict))

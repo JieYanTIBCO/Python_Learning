@@ -1,6 +1,5 @@
 import csv
-from datetime import datetime, timedelta
-from dateutil import parser
+import datetime
 import json
 import logging
 
@@ -11,16 +10,10 @@ json_file = r"C:\Users\Jackie\Employee_export1.json"
 logging.basicConfig(
     level=logging.INFO,  # Set log level
     format="%(asctime)s - %(levelname)s - %(message)s",
-    datefmt="%Y-%m-%d %H:%M:%S %z"
+    datefmt="%Y-%m-%d %H:%M:%S %z",
 )
 
-formats = [
-    "%Y-%m-%d",
-    "%m/%d/%Y",
-    "%d %b %Y",
-    "%Y-%m-%d %H:%M:%S",
-    "%m/%d/%Y %H:%M:%S"
-]
+formats = ["%Y-%m-%d", "%m/%d/%Y", "%d %b %Y", "%Y-%m-%d %H:%M:%S", "%m/%d/%Y %H:%M:%S"]
 
 
 def parse_date(value):
@@ -38,10 +31,10 @@ with open(csv_file, "r", encoding="utf-8") as file:
     reader = csv.DictReader(file)
     data = [row for row in reader]
     for row in data:
-        logging.info("Before transform datetime:"+str(row["HireDate"]))
+        logging.info("Before transform datetime:" + str(row["HireDate"]))
         row["HireDate"] = parse_date(str(row["HireDate"]))
         # row["HireDate"] = datetime.strptime(str(row["HireDate"]), "%Y-%m-%d %H:%M:%S").date()
-        logging.info("After transform datetime:"+str(row["HireDate"]))
+        logging.info("After transform datetime:" + str(row["HireDate"]))
 
 with open(json_file, "w", encoding="utf-8") as jfile:
     json.dump(data, jfile, indent=4)
